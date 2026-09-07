@@ -44,7 +44,7 @@ public class SetmealController {
     @GetMapping("/page")
     @ApiOperation("分页查询")
     public Result<PageResult> page(SetmealPageQueryDTO setmealPageQueryDTO) {
-        //调用pageQuery方法,交给springboot的分页插件PageHelper处理分页查询
+        //调用pageQuery方法,交给springboot的分页插件PageHelper处理分页查询（自动处理）
         PageResult pageResult = setmealService.pageQuery(setmealPageQueryDTO);
         return Result.success(pageResult);
     }

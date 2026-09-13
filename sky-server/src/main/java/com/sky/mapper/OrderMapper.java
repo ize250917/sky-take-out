@@ -13,9 +13,17 @@ import java.util.List;
 public interface OrderMapper {
     /**
      * 插入订单数据
-     * @param orders
+     * @param order
      */
-    void insert(Orders orders);
+    void insert(Orders order);
+
+    /**
+     * 根据订单号查询订单
+     * @param orderNumber
+     */
+    @Select("select * from orders where number = #{orderNumber}")
+    Orders getByNumber(String orderNumber);
+
 
     /**
      * 分页条件查询订单

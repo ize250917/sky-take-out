@@ -76,7 +76,7 @@ public interface OrderMapper {
      * @param map
      * @return
      */
-    Integer getOrderCount(Map map);
+    Integer countByMap(Map map);
 
     /**
      * 查询Top10用户订单

@@ -46,6 +46,19 @@ public interface EmployeeMapper {
     @AutoFill(value = OperationType.UPDATE)
     void update(Employee employee);
 
+    /**
+     * 根据主键查询员工数据
+     * @param id
+     * @return
+     */
     @Select("select * from employee where id = #{id}")
     Employee getById(Long id);
+
+    /**
+     * 更新员工密码
+     * @param empId
+     * @param password
+     * @return
+     */
+    int setPassword(Long empId, String password);
 }

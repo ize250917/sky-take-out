@@ -208,8 +208,8 @@ public class ReportServiceImpl implements ReportService {
      */
     public void exportBusinessData(HttpServletResponse response) {
         //1. 查询数据库，获取营业数据---查询最近30天的运营数据
-        LocalDate dateBegin = LocalDate.now().minusDays(30);
-        LocalDate dateEnd = LocalDate.now().minusDays(1);
+        LocalDate dateBegin = LocalDate.now().minusDays(30); //前30天
+        LocalDate dateEnd = LocalDate.now().minusDays(1); //昨天
 
         //查询概览数据
         BusinessDataVO businessDataVO = workspaceService.getBusinessData(LocalDateTime.of(dateBegin, LocalTime.MIN), LocalDateTime.of(dateEnd, LocalTime.MAX));
@@ -240,7 +240,7 @@ public class ReportServiceImpl implements ReportService {
 
             //填充明细数据
             for (int i = 0; i < 30; i++) {
-                LocalDate date = dateBegin.plusDays(i);
+                LocalDate date = dateBegin.plusDays(i); //从前30天开始，每次增加1天
                 //查询某一天的营业数据
                 BusinessDataVO businessData = workspaceService.getBusinessData(LocalDateTime.of(date, LocalTime.MIN), LocalDateTime.of(date, LocalTime.MAX));
 

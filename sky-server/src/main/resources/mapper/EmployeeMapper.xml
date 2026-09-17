@@ -29,4 +29,9 @@
         </set>
         where id = #{id}
     </update>
+    <update id="setPassword">
+        update employee
+        set password = #{password}
+        where id = #{empId}
+    </update>
 </mapper>

@@ -4,6 +4,7 @@ import com.sky.constant.JwtClaimsConstant;
 import com.sky.dto.DishPageQueryDTO;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
+import com.sky.dto.PasswordEditDTO;
 import com.sky.entity.Employee;
 import com.sky.properties.JwtProperties;
 import com.sky.result.PageResult;
@@ -64,6 +65,19 @@ public class EmployeeController {
     }
 
     /**
+     * 修改密码
+     * @return
+     */
+    @PutMapping("/editPassword")
+    @ApiOperation("修改密码")
+    public Result editPassword(@RequestBody PasswordEditDTO passwordEditDTO) {
+        log.info("修改密码");
+        employeeService.setPassword(passwordEditDTO);
+        return Result.success();
+    }
+
+
+    /**
      * 退出
      *
      * @return
@@ -73,7 +87,12 @@ public class EmployeeController {
         return Result.success();
     }
 
-    //新增员工
+    /**
+     * 新增员工
+     *
+     * @param employeeDTO
+     * @return
+     */
     @PostMapping
     @ApiOperation("新增员工")
     public Result save(@RequestBody EmployeeDTO employeeDTO) {
@@ -82,7 +101,12 @@ public class EmployeeController {
         return Result.success();
     }
 
-    //分页查询员工列表
+    /**
+     * 分页查询员工列表
+     *
+     * @param dishPageQueryDTO
+     * @return
+     */
     @GetMapping("/page")
     @ApiOperation("分页查询员工列表")
     public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO) {
@@ -103,7 +127,12 @@ public class EmployeeController {
         return Result.success();
     }
 
-    //根据id查询员工信息
+    /**
+     * 根据id查询员工信息
+     *
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     @ApiOperation("根据id查询员工信息")
     public Result<Employee> getById(@PathVariable Long id) {
@@ -112,8 +141,13 @@ public class EmployeeController {
         return Result.success(employee);
     }
 
-    //修改员工信息
-    @PutMapping
+    /**
+     * 修改员工信息
+     *
+     * @param employeeDTO
+     * @return
+     */
+    @PutMapping()
     @ApiOperation("修改员工信息")
     public Result update(@RequestBody EmployeeDTO employeeDTO) {
         log.info("修改员工信息{}", employeeDTO);
